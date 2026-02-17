@@ -10,3 +10,5 @@
 
 ## Content
 - [ ] Log into SociableKIT dashboard and adjust the number of Google reviews displayed on the reviews page (embed ID `25595174`)
+- [ ] Add a Press section for museum news coverage (newspaper articles, TV spots, etc.)
+- [ ] Embed YouTube videos on the media page
