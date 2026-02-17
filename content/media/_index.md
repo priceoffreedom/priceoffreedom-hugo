@@ -27,7 +27,7 @@ description: "Photos from the Price of Freedom Museum"
 
 ![Japanese and German Artifacts](/images/wp-content/uploads/2025/09/jap_ger.jpg)
 
-![M35 Military Truck](/images/wp-content/uploads/2025/09/m35-1024x768.jpg)
+![M35 Military Truck](/images/wp-content/uploads/2025/09/m35.jpg)
 
 ![Museum Display](/images/wp-content/uploads/2025/09/normal_Untitled_-_19.jpg)
 

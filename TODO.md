@@ -7,3 +7,6 @@
   - Enable "Enforce HTTPS"
 - [ ] Update git config email from `priceoffreedom@users.noreply.github.com` to a museum-owned email (e.g. `info@priceoffreedom.us`)
 - [ ] Set up GitHub Pages: go to https://github.com/priceoffreedom/priceoffreedom-hugo/settings/pages and set Source to "GitHub Actions"
+
+## Content
+- [ ] Log into SociableKIT dashboard and adjust the number of Google reviews displayed on the reviews page (embed ID `25595174`)

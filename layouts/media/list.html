@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+
+  <head>
+    {{ partial "headers.html" . }}
+    {{ partial "custom_headers.html" . }}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/css/glightbox.min.css">
+    <style>
+      .gallery-content blockquote {
+        margin-bottom: 30px;
+        font-size: 1.2em;
+      }
+      .gallery-content h2 {
+        margin-top: 40px;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid var(--primary-accent, #848233);
+      }
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 10px;
+        margin-bottom: 30px;
+      }
+      .gallery-grid a {
+        display: block;
+        overflow: hidden;
+        border-radius: 4px;
+        background: #f5f5f5;
+        aspect-ratio: 4/3;
+      }
+      .gallery-grid a img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+      .gallery-grid a:hover img {
+        transform: scale(1.05);
+      }
+      @media (max-width: 767px) {
+        .gallery-grid {
+          grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <div id="all">
+        {{ partial "top.html" . }}
+
+        {{ partial "nav.html" . }}
+
+        {{ partial "breadcrumbs.html" . }}
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <div class="gallery-content">
+                          {{ .Content }}
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- /.row -->
+
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /#content -->
+
+        {{ partial "footer.html" . }}
+
+    </div>
+    <!-- /#all -->
+
+    {{ partial "scripts.html" . }}
+    <script src="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/js/glightbox.min.js"></script>
+    <script>
+      (function() {
+        var content = document.querySelector('.gallery-content');
+        if (!content) return;
+
+        // Collect all <p> tags that contain an <img>
+        var imageParagraphs = content.querySelectorAll('p > img');
+
+        // Group consecutive image paragraphs
+        var groups = [];
+        var currentGroup = [];
+
+        imageParagraphs.forEach(function(img) {
+          var p = img.parentNode;
+          if (currentGroup.length === 0) {
+            currentGroup.push(p);
+          } else {
+            // Check if this <p> is a direct sibling of the last one in the group
+            var lastP = currentGroup[currentGroup.length - 1];
+            var next = lastP.nextElementSibling;
+            if (next === p) {
+              currentGroup.push(p);
+            } else {
+              groups.push(currentGroup);
+              currentGroup = [p];
+            }
+          }
+        });
+        if (currentGroup.length > 0) {
+          groups.push(currentGroup);
+        }
+
+        // Replace each group with a gallery grid
+        groups.forEach(function(group) {
+          var grid = document.createElement('div');
+          grid.className = 'gallery-grid';
+
+          group.forEach(function(p) {
+            var img = p.querySelector('img');
+            if (img) {
+              var a = document.createElement('a');
+              a.href = img.src;
+              a.className = 'glightbox';
+              a.setAttribute('data-gallery', 'museum-gallery');
+              a.setAttribute('data-title', img.alt || '');
+              a.appendChild(img.cloneNode(true));
+              grid.appendChild(a);
+            }
+          });
+
+          // Insert grid before the first paragraph, then remove originals
+          group[0].parentNode.insertBefore(grid, group[0]);
+          group.forEach(function(p) {
+            p.parentNode.removeChild(p);
+          });
+        });
+
+        // Initialize GLightbox
+        GLightbox({
+          selector: '.glightbox',
+          touchNavigation: true,
+          loop: true,
+          closeOnOutsideClick: true
+        });
+      })();
+    </script>
+  </body>
+</html>

@@ -1158,7 +1158,7 @@ fieldset[disabled] .btn-template-primary.active {
 }
 .home-carousel {
   position: relative;
-  background: url('../img/photogrid.jpg') center center repeat;
+  background: url('../img/mosaic-background.jpg') center center no-repeat;
   background-size: cover;
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
@@ -1171,8 +1171,8 @@ fieldset[disabled] .btn-template-primary.active {
   width: 100%;
   height: 100%;
   background: var(--primary-accent);
-  opacity: 0.9;
-  filter: alpha(opacity=90);
+  opacity: 0.8;
+  filter: alpha(opacity=80);
 }
 .home-carousel .owl-carousel {
   padding-top: 60px;
@@ -1789,9 +1789,7 @@ fieldset[disabled] .btn-template-primary.active {
   background-size: cover;
 }
 .bar.background-image-fixed-2 {
-  background: url('../img/fixed-background-2.jpg') center top no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
+  background: url('../img/carousel/museum-front.png') center top / cover no-repeat fixed;
 }
 .bar.color-white h1,
 .bar.color-white h2,

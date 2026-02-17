@@ -90,6 +90,11 @@ pluralizelisttitles = false
       </p>
       """
 
+[markup]
+    [markup.goldmark]
+        [markup.goldmark.renderer]
+            unsafe = true
+
 [permalinks]
     posts = "/posts/:contentbasename/"
 
